@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de depresión UMBRAL</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+<div class="pagina">
+<div class="caja">
+
+<h1>Test de depresión UMBRAL</h1>
+
+<form id="formUsuario">
+    <label>Nombre</label>
+    <input type="text" id="Nombre">
+
+    <label>Apellido</label>
+    <input type="text" id="Apellido">
+
+    <label>Edad</label>
+    <input type="text" id="Edad">
+
+    <label>Carrera</label>
+    <input type="text" id="Carrera">
+
+    <label>Año</label>
+    <input list="Añocursante" id="Anio">
+    <datalist id="Añocursante">
+        <option value="Primer año">
+        <option value="Segundo año">
+        <option value="Tercer año">
+        <option value="Cuarto año">
+        <option value="Quinto año">
+        <option value="Sexto año">
+    </datalist>
+
+    <button type="button" onclick="mostrarPreguntas()">Siguiente</button>
+</form>
+
+<div id="preguntas" style="display:none;">
+    <h2>Responde las siguientes preguntas</h2>
+
+    <script>
+        const preguntas = [
+            "¿Con qué frecuencia te has sentido triste, vacío/a o sin esperanza?",
+            "¿Con qué frecuencia has perdido el interés o el placer en actividades que antes disfrutabas?",
+            "¿Con qué frecuencia te has sentido cansado/a o con muy poca energía?",
+            "¿Con qué frecuencia has tenido dificultades para concentrarte o tomar decisiones?",
+            "¿Con qué frecuencia has sentido culpa excesiva o que no vales lo suficiente?",
+            "¿Con qué frecuencia has tenido problemas para dormir (dormir muy poco o demasiado)?",
+            "¿Con qué frecuencia has sentido que tu vida no tiene sentido o propósito?",
+            "¿Con qué frecuencia has pensado que los demás estarían mejor sin ti?",
+            "¿Con qué frecuencia has tenido pensamientos de hacerte daño?",
+            "¿Con qué frecuencia has tenido impulsos de lastimarte, aunque no los hayas llevado a cabo?"
+        ];
+
+        for (let i = 0; i < preguntas.length; i++) {
+            document.write(`
+            <div class="pregunta-card">
+                <p>${i + 1}. ${preguntas[i]}</p>
+                <label><input type="radio" name="p${i + 1}" value="1"> Nunca</label>
+                <label><input type="radio" name="p${i + 1}" value="2"> A veces</label>
+                <label><input type="radio" name="p${i + 1}" value="3"> Frecuentemente</label>
+            </div>
+            `);
+        }
+    </script>
+
+    <button type="button" onclick="calcularResultado()">Finalizar</button>
+</div>
+
+<div id="resultado" style="display:none;">
+    <h2>Resultado del test</h2>
+    <p id="mensajeResultado"></p>
+</div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
